@@ -12,7 +12,7 @@ export default function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/auth/register", { name, email, password });
+      await axios.post("https://docsearch-y8m5.onrender.com/api/auth/register", { name, email, password });
       navigate("/"); 
     } catch (err) {
       setError("Email already exists or invalid details");

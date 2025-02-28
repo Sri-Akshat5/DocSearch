@@ -20,7 +20,7 @@ export default function UploadView() {
         console.error("No auth token found.");
         return;
       }
-      const res = await axios.get("http://localhost:5000/api/documents", {
+      const res = await axios.get("https://docsearch-y8m5.onrender.com/api/documents", {
         headers: { "x-auth-token": token },
       });
       setDocuments(res.data);
@@ -56,7 +56,7 @@ export default function UploadView() {
     formData.append("familyMember", familyMember);
 
     try {
-      await axios.post("http://localhost:5000/api/upload", formData);
+      await axios.post("https://docsearch-y8m5.onrender.com/api/upload", formData);
       alert("File uploaded successfully!");
       fetchDocuments();
     } catch (error) {
@@ -75,7 +75,7 @@ export default function UploadView() {
     if (!window.confirm("Are you sure you want to delete this document?")) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/documents/${id}`, {
+      await axios.delete(`https://docsearch-y8m5.onrender.com/api/documents/${id}`, {
         headers: { "x-auth-token": token },
       });
       alert("Document deleted successfully!");
@@ -161,7 +161,7 @@ export default function UploadView() {
                   <p className="text-gray-400">📅 Issue Date: {doc.issueDate}</p>
                   <p className="text-gray-400">🔖 ID Number: {doc.idNumber}</p>
                   <a
-                    href={`http://localhost:5000/uploads/${doc.filePath}`}
+                    href={`https://docsearch-y8m5.onrender.com/uploads/${doc.filePath}`}
                     target="_blank"
                     className="text-blue-400 hover:underline mt-2 inline-block"
                   >
