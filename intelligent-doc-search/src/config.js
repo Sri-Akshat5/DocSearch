@@ -1,3 +1,3 @@
-const API_BASE_URL = "https://docsearch-y8m5.onrender.com";
+const API_BASE_URL = "docsearch-production.up.railway.app";
 
 export default API_BASE_URL;
