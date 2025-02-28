@@ -30,7 +30,7 @@ npm install
 npm run dev
 ```
 ## 🔹 Frontend Deployment(Not Connected with backend)
-[https://doc-search-pi.vercel.app/](https://doc-search-pi.vercel.app/)
+[https://doc-search-eta.vercel.app/](https://doc-search-eta.vercel.app/)
 
 
 ## 🔗 API Endpoints
