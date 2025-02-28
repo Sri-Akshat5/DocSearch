@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { MdDeleteForever } from "react-icons/md";
+import API_BASE_URL from "./config";
 
 import axios from "axios";
 
@@ -20,7 +21,7 @@ export default function UploadView() {
         console.error("No auth token found.");
         return;
       }
-      const res = await axios.get("https://docsearch-y8m5.onrender.com/api/documents", {
+      const res = await axios.get(`${API_BASE_URL}/api/documents`, {
         headers: { "x-auth-token": token },
       });
       setDocuments(res.data);
@@ -56,7 +57,7 @@ export default function UploadView() {
     formData.append("familyMember", familyMember);
 
     try {
-      await axios.post("https://docsearch-y8m5.onrender.com/api/upload", formData);
+      await axios.post(`${API_BASE_URL}/api/upload`, formData);
       alert("File uploaded successfully!");
       fetchDocuments();
     } catch (error) {
@@ -75,7 +76,7 @@ export default function UploadView() {
     if (!window.confirm("Are you sure you want to delete this document?")) return;
 
     try {
-      await axios.delete(`https://docsearch-y8m5.onrender.com/api/documents/${id}`, {
+      await axios.delete(`${API_BASE_URL}/api/documents/${id}`, {
         headers: { "x-auth-token": token },
       });
       alert("Document deleted successfully!");
@@ -161,7 +162,7 @@ export default function UploadView() {
                   <p className="text-gray-400">📅 Issue Date: {doc.issueDate}</p>
                   <p className="text-gray-400">🔖 ID Number: {doc.idNumber}</p>
                   <a
-                    href={`https://docsearch-y8m5.onrender.com/uploads/${doc.filePath}`}
+                    href={`${API_BASE_URL}/uploads/${doc.filePath}`}
                     target="_blank"
                     className="text-blue-400 hover:underline mt-2 inline-block"
                   >

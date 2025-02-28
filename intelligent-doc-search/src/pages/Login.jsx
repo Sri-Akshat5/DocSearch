@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import API_BASE_URL from "./config";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -11,10 +12,8 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://docsearch-y8m5.onrender.com/api/auth/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(`${API_BASE_URL}/api/auth/login`, { email, password });
+
 
       if (response.data && response.data.token) {
         localStorage.setItem("token", response.data.token);

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import axios from "axios";
+import API_BASE_URL from "./config";
 
 export default function Search() {
   const [query, setQuery] = useState("");
@@ -13,7 +14,7 @@ export default function Search() {
     }
 
     try {
-      const { data } = await axios.get(`https://docsearch-y8m5.onrender.com/api/search?q=${query}`);
+      const { data } = await axios.get(`${API_BASE_URL}/api/search?q=${query}`);
       setResults(data);
     } catch (error) {
       console.error("Search Error:", error);
@@ -31,7 +32,7 @@ const handleDelete = async (id) => {
   if (!window.confirm("Are you sure you want to delete this document?")) return;
 
   try {
-    await axios.delete(`https://docsearch-y8m5.onrender.com/api/documents/${id}`, {
+    await axios.delete(`${API_BASE_URL}/api/documents/${id}`, {
       headers: { "x-auth-token": token },
     });
     alert("Document deleted successfully!");
@@ -75,7 +76,7 @@ const handleDelete = async (id) => {
                 <p className="text-gray-400">📅 Issue Date: {doc.issueDate}</p>
                 <p className="text-gray-400">🔖 ID Number: {doc.idNumber}</p>
                 <a
-                  href={`https://docsearch-y8m5.onrender.com/uploads/${doc.filePath}`}
+                  href={`${API_BASE_URL}/uploads/${doc.filePath}`}
                   target="_blank"
                   className="text-blue-400 hover:underline mt-2 inline-block"
                 >
