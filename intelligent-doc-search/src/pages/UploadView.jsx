@@ -80,7 +80,7 @@ export default function UploadView() {
         headers: { "x-auth-token": token },
       });
       alert("Document deleted successfully!");
-      setDocuments(documents.filter((doc) => doc.id !== id)); // Remove from UI
+      setDocuments(documents.filter((doc) => doc.id !== id)); 
     } catch (error) {
       console.error("Delete failed:", error);
     }
