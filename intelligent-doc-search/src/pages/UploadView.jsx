@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { MdDeleteForever } from "react-icons/md";
-import API_BASE_URL from "./config";
+import API_BASE_URL from "../config";
 
 import axios from "axios";
 

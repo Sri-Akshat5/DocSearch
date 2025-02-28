@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import axios from "axios";
-import API_BASE_URL from "./config";
+import API_BASE_URL from "../config";
 
 export default function Search() {
   const [query, setQuery] = useState("");
